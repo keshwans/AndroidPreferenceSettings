@@ -18,8 +18,6 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -162,7 +160,8 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onResume() {
             super.onResume();
-            setSectionFontSize();
+          //  setSectionFontSize();
+            setSectionFontSize2();
         }
 
 
@@ -172,11 +171,25 @@ public class MainActivity extends AppCompatActivity
             //retrieve the font size saved by SettingsActvity or by default value in xml initialized in onCreate()
 
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String prefFontSizeKeyName = getResources().getString(R.string.pref_font_size_key_name);
+            String prefFontSizeKeyName = getResources().getString(R.string.pref_font_size_key_1_name);
             int preferredFontSize = Integer.parseInt(sharedPref.getString(prefFontSizeKeyName , defaultFontSize + ""));
 
             sectionTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, preferredFontSize);
         }
+
+
+        private void setSectionFontSize2() {
+            int defaultFontSize = getResources().getInteger(R.integer.default_font_size);
+
+            //retrieve the font size saved by SettingsActvity or by default value in xml initialized in onCreate()
+
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String prefFontSizeKeyName = getResources().getString(R.string.pref_font_size_key_2_name);
+            int preferredFontSize = sharedPref.getInt(prefFontSizeKeyName , defaultFontSize);
+
+            sectionTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, preferredFontSize);
+        }
+
 
         @Override
         public void onAttach(Activity activity) {

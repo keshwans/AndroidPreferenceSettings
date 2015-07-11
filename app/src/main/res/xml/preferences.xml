@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference android:title="Your Name"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
         android:key="username"
-        android:summary="Please provide your username"></EditTextPreference>
-    <CheckBoxPreference android:title="Application Updates"
+        android:summary="Please provide your username"
+        android:title="Your Name"></EditTextPreference>
+
+    <CheckBoxPreference
         android:defaultValue="false"
+        android:key="applicationUpdates"
         android:summary="This option if selected will allow the application to check for latest versions."
-        android:key="applicationUpdates" />
-    <ListPreference     android:title="Download Details"
-        android:summary="Select the kind of data that you would like to download"
-        android:key="downloadType"
+        android:title="Application Updates" />
+
+    <ListPreference
         android:defaultValue="1"
         android:entries="@array/listArray"
-        android:entryValues="@array/listValues" />
+        android:entryValues="@array/listValues"
+        android:key="downloadType"
+        android:summary="Select the kind of data that you would like to download"
+        android:title="Download Details" />
 
-    <EditTextPreference android:title="Font size"
-        android:key="@string/pref_font_size_key_name"
-        android:summary="Please set font size"
+    <EditTextPreference
         android:defaultValue="20"
-        android:inputType="number" />
+        android:inputType="number"
+        android:key="@string/pref_font_size_key_1_name"
+        android:summary="Set font size to:"
+        android:title="Font size" />
+
+    <org.c4q.prefsettingsapp.NumberPickerDialogPreference
+        android:key="@string/pref_font_size_key_2_name"
+        android:defaultValue="18"
+        android:dialogMessage="Set font size to:"
+        android:max="30"
+        android:title="Font size"
+        custom:min="12" />
+
 
 </PreferenceScreen>
